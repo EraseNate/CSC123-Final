@@ -15,7 +15,7 @@ function draw() {
   background(225);
   if (instruction.instActive)
   {
-
+    instruction.exitDisplay()
   }
   else if (start.gameActive)
   {
@@ -27,7 +27,7 @@ function draw() {
   }
   else
   {
-    inst.checkCollision();
+    instruction.checkCollision();
     start.checkCollision();
   }
 
