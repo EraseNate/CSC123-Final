@@ -11,39 +11,46 @@ class playButton
 {
     constructor()
         {
+          push();
             rectMode(CENTER);
             textAlign(CENTER,CENTER);
             textSize(50);
             this.gameActive = false;
             rect(width/2, height/2, 200, 100);
             text("PLAY", width/2, height/2);
+          pop();
         }
 
     checkCollision()
         {
+          push();
+          rectMode(CENTER);
+          textAlign(CENTER,CENTER);
           textSize(50);
-          rect(width/2,height/2,200,100);
-            if (mouseX > (width/2) - 100 && mouseX < (width/2)+100 && mouseY > height/2-50 && mouseY < (height/2)+50)
-            {
-                if (mouseIsPressed)
-                {
-                    playState = CLICK;
-                    this.gameActive = true;
-                }
-                else 
-                {
-                    playState = HOVER;
-                }
-            }
+            if (mouseX > (width/2) - 100 && 
+                mouseX < (width/2)+100 && 
+                mouseY > height/2-50 && 
+                mouseY < (height/2)+50)
+              {
+                  if (mouseIsPressed)
+                    {
+                      playState = CLICK;
+                      this.gameActive = true;
+                    }
+                  else 
+                    {
+                      playState = HOVER;
+                    }
+              }
             else
-            {
+              {
                 playState = DEFAULT;
-            }
+              }
             this.playState();
-            rect(width/2,height/2,200,100)
+            rect(width/2,height/2, 200, 100)
             fill(0);
             text("PLAY", width/2, height/2);
-            fill(255);
+          pop();
         }
 
     playState()
@@ -62,17 +69,25 @@ class instButton
   {
     constructor()
       {
-        rectMode(CENTER);
-        textAlign(CENTER,CENTER);
-        textSize(35);
-        this.instActive = false;
-        rect(width/2, 3*height/4, 200, 100);
-        text("How To Play", width/2, 3*height/4);
+        push();
+          rectMode(CENTER);
+          textAlign(CENTER,CENTER);
+          textSize(35);
+          this.instActive = false;
+          rect(width/2, 3*height/4, 200, 100);
+          text("How To Play", width/2, 3*height/4);
+        pop();
       }
     checkCollision()
       {
-        rect(width/2,3*height/4,200,100);
-        if (mouseX > (width/2) - 100 && mouseX < (width/2)+100 && mouseY > (3*height/4) - 50 && mouseY < (3*height/4) + 50)
+        push();
+        rectMode(CENTER);
+        textAlign(CENTER,CENTER);
+        textSize(35);
+        if (mouseX > (width/2) - 100   && 
+            mouseX < (width/2) + 100   && 
+            mouseY > (3*height/4) - 50 && 
+            mouseY < (3*height/4) + 50   )
           {
             if (mouseIsPressed)
               {
@@ -91,9 +106,8 @@ class instButton
           this.instState();
           rect(width/2,3*height/4,200,100)
           fill(0);
-          textSize(35);
           text("How To Play", width/2, 3*height/4);
-          fill(255);
+        pop();
         }
 
     instState()
@@ -108,17 +122,24 @@ class instButton
         }
     exitDisplay()
         {
+          push();
+            rectMode(CENTER);
+            textAlign(CENTER,CENTER);
             fill(180);
             rect(width/2, height/2, 700, 700);
             textSize(15);
             fill(255);
             text("This is how you play the game!", width/2, height/2);
             this.exitCollision();
+          pop();
         }
     exitCollision()
         {
+          push();
+          rectMode(CENTER);
+          textAlign(CENTER,CENTER);
             rect(740, 60, 20, 20);
-            if (mouseX > 730 && mouseX < 750 && mouseY > 60 && mouseY < 80)
+            if (mouseX > 730 && mouseX < 750 && mouseY > 50 && mouseY < 70)
                 {
                   if (mouseIsPressed)
                     {
@@ -139,6 +160,7 @@ class instButton
             textSize(15);
             fill(0);
             text("X", 740, 60);
+          pop();
         }
     exitState()
         {
