@@ -1,0 +1,31 @@
+/* Reset styles */
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  canvas {
+    display: block;
+  }
+  
+  /* Load and define the Medieval Sharp font */
+  @font-face {
+    font-family: 'MedievalSharp';
+    src: url('../fonts/MedievalSharp-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'MedievalSharp';
+    src: url('../fonts/MedievalSharp-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  /* Apply the font to your page */
+  body {
+    font-family: 'MedievalSharp', serif;
+    background-color: #f4f4f4; /* Optional: Add a light background for contrast */
+  }
+  
