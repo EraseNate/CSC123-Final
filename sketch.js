@@ -1,54 +1,35 @@
-let title, scene, game, start, instruction, w, h, medievalFont;
+let prologue;
+let scene;
+let game;
+let startMenu;
+let prologuestart = false;
+let gameStarted = false;
 
-function preload()
-  {
-    medievalFont = loadFont("CSS Fonts/MedievalSharp-Book.ttf");
+function setup() {
+  createCanvas(800, 800);
+  scene = new ShowMap();
+  game = new Game();
+  startMenu = new StartMenu();
+  prologue = new Prologue();
+}
+
+function preload(){
+  startFont = loadFont('Jersey10-Regular.ttf');
+  mainScreen = loadImage('mainScreen.jpg');
+}
+
+function draw() {
+  if (!gameStarted) {
+    startMenu.display();
+  } else if (prologuestart) {
+    prologue.display();
+  } else {
+    background(mainScreen);
+    if (scene.sceneActive) {
+      scene.display(); // Display map scene if active
+    } else {
+      game.display(); // Display battle scene if collision occurred
+    }
   }
+}
 
-function setup()
-  {
-    createCanvas(800, 800);
-    
-    w = width;
-    h = height;
-
-    title = new Title();
-    start = new playButton();
-    scene = new ShowMap();
-    game = new Game();
-    instruction = new instButton();
-  }
-
-function draw()
-  {
-    background(225);
-    if (!start.gameActive && !instruction.instActive)
-      {
-        title.isVisible = true;
-      }
-    else
-      {
-        title.isVisible = false;
-      }
-    title.display();
-    if (instruction.instActive)
-      {
-        instruction.exitDisplay();
-      }
-    else if (start.gameActive)
-      {
-        if (scene.sceneActive)
-          {
-            scene.display(); // Display map scene if active
-          }
-        else
-          {
-            game.display(); // Display battle scene if collision occurred
-          }
-      }
-    else
-      {
-        instruction.checkCollision();
-        start.checkCollision();
-      }
-  }
